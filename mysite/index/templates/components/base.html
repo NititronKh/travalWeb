@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Website Title{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <h1>ทดสอบโลโก้</h1>
+            </div>
+        </div>
+    </header>
+    
+    <nav class="navbar">
+        <ul class="menu">
+            <li class="dropdown">
+                <a href="#" class="dropbtn" id="selectedMenu" onclick="toggleDropdown(event)">
+                    <i class="fas fa-list"></i></i>หน้าหลัก 
+                </a>
+                <ul class="dropdown-content" id="dropdown-content">
+                    <li><a href="{% url 'index' %}" onclick="changeMenu('หน้าหลัก', event)">หน้าหลัก</a></li>
+                    <li><a href="{% url 'submit_content' %}" onclick="changeMenu('ส่งข้อมูล', event)">ส่งข้อมูล</a></li>
+                    <li><a href="{% url 'show_content' %}" onclick="changeMenu('ดูข้อมูล', event)">ดูข้อมูล</a></li>
+                    <li><a href="#" onclick="changeMenu('ดูข้อมูล', event)">ทดสอบหน้าเปล่า</a></li>
+                    <li><a href="#" onclick="changeMenu('ดูข้อมูล', event)">test2</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2024 CoffeeShop. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        function changeMenu(menuName, event) {
+            event.preventDefault();
+            localStorage.setItem('selectedMenu', menuName);
+            document.getElementById('selectedMenu').innerHTML = `<i class="fas fa-list"></i> ${menuName}`;
+            const url = event.target.href;
+            setTimeout(function() {
+                window.location.href = url;
+            }, 100);
+        }
+
+        function toggleDropdown(event) {
+            event.preventDefault();
+            const dropdown = document.getElementById('dropdown-content');
+            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+        }
+
+        window.onclick = function(event) {
+            if (!event.target.matches('.dropbtn')) {
+                const dropdown = document.getElementById('dropdown-content');
+                if (dropdown.style.display === 'block') {
+                    dropdown.style.display = 'none';
+                }
+            }
+        }
+
+        window.onload = function() {
+            const savedMenu = localStorage.getItem('selectedMenu');
+            if (savedMenu) {
+                document.getElementById('selectedMenu').innerHTML = `<i class="fas fa-list"></i> ${savedMenu}`;
+            }
+        }
+    </script>
+</body>
+</html>
