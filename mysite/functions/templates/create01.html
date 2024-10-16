@@ -9,43 +9,43 @@
         {% csrf_token %}
         
         <div class="form-group">
-            {{ form.title.label_tag }} 
+            <label for="{{ form.title.id_for_label }}">{{ form.title.label }}</label>
             {{ form.title }}
             <small class="help-text">{{ form.title.help_text }}</small>
         </div>
 
         <div class="form-group">
-            {{ form.author.label_tag }} 
+            <label for="{{ form.author.id_for_label }}">{{ form.author.label }}</label>
             {{ form.author }}
             <small class="help-text">{{ form.author.help_text }}</small>
         </div>
 
         <div class="form-group">
-            {{ form.date.label_tag }} 
+            <label for="{{ form.date.id_for_label }}">{{ form.date.label }}</label>
             {{ form.date }}
             <small class="help-text">{{ form.date.help_text }}</small>
         </div>
 
         <div class="form-group">
-            {{ form.content.label_tag }} 
+            <label for="{{ form.content.id_for_label }}">{{ form.content.label }}</label>
             {{ form.content }}
             <small class="help-text">{{ form.content.help_text }}</small>
         </div>
 
         <div class="form-group">
-            {{ form.image.label_tag }} 
+            <label for="{{ form.image.id_for_label }}">{{ form.image.label }}</label>
             {{ form.image }}
             <small class="help-text">{{ form.image.help_text }}</small>
         </div>
 
         <div class="form-group">
-            {{ form.caption.label_tag }} 
+            <label for="{{ form.caption.id_for_label }}">{{ form.caption.label }}</label>
             {{ form.caption }}
             <small class="help-text">{{ form.caption.help_text }}</small>
         </div>
 
         <div class="form-group">
-            {{ form.youtube_url.label_tag }} 
+            <label for="{{ form.youtube_url.id_for_label }}">{{ form.youtube_url.label }}</label>
             {{ form.youtube_url }}
             <small class="help-text">{{ form.youtube_url.help_text }}</small>
         </div>

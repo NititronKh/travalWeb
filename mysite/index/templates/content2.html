@@ -1,37 +1,49 @@
 {% extends "components/base.html" %}
 
-{% block title %}Content Page{% endblock %}
+{% block title %}สังคมไทบ้าน{% endblock %}
 
 {% block content %}
-    <h1>All Contents</h1>
 
-    <!-- ลิงก์เพิ่มเนื้อหาใหม่อยู่ด้านบน -->
-    <a href="{% url 'submit_content' %}">Add New Content</a>
+<body class="fullPage">
+    <div class="pageAll">
+        {% if contents %}
+        {% for content in contents reversed %} <!-- ใช้ reversed เพื่อเรียงลำดับกลับ -->
 
-    <!-- แสดงข้อมูลที่ดึงมาจากฐานข้อมูล -->
-    {% if contents %}
-        <ul>
-            {% for content in contents reversed %}  <!-- ใช้ reversed เพื่อเรียงลำดับกลับ -->
-                <li>
-                    <h2>{{ content.title }}</h2>
-                    <p class="text"><strong>Author:</strong> {{ content.author }}</p>
-                    <p><strong>Date:</strong> {{ content.date }}</p>
-                    <p class="text"><strong>Content:</strong> {{ content.content }}</p>
-                    <p class="text"><strong>Caption:</strong> {{ content.caption }}</p>
-                    {% if content.image %}
-                        <img src="{{ content.image.url }}" alt="Image" class="image">
-                    {% endif %}
-                    <p class="text"><strong>Caption:</strong> {{ content.caption }}</p>
-                    {% if content.youtube_url %}
-                        <div class="video-container">
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ content.youtube_url|slice:'-11:' }}" 
-                             frameborder="0" allowfullscreen></iframe>
-                       </div>
-                    {% endif %}
-                </li>
-            {% endfor %}
-        </ul>
-    {% else %}
+        {% if content.title %}
+        <h2 class="text">{{ content.title }}</h2>
+        {% endif %}
+
+        {% if content.author %}
+        <p class="text">{{ content.author }}</p>
+        {% endif %}
+
+        {% if content.date %}
+        <p class="text">{{ content.date }}</p>
+        {% endif %}
+
+        {% if content.content %}
+        <p class="text">{{ content.content }}</p>
+        {% endif %}
+
+        {% if content.caption %}
+        <p class="text">{{ content.caption }}</p>
+        {% endif %}
+
+        {% if content.image %}
+        <img src="{{ content.image.url }}" alt="Image" class="image">
+        {% endif %}
+
+        {% if content.youtube_url %}
+        <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ content.youtube_url|slice:'-11:' }}"
+                frameborder="0" allowfullscreen></iframe>
+        </div>
+        {% endif %}
+
+        {% endfor %}
+        {% else %}
         <p>No content available.</p>
-    {% endif %}
+        {% endif %}
+    </div>
+</body>
 {% endblock %}
