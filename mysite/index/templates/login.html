@@ -1,0 +1,24 @@
+{% extends "components/base.html" %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    <div class="login-container">
+        <h2 class="login-header">เข้าสู่ระบบสำหรับผู้ดูแล</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="form-group">
+                <button type="submit" class="button-login">เข้าสู่ระบบ</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
+{% endblock %}

@@ -7,7 +7,7 @@
     <div class="pageAll">
         {% if contents %}
             {% for content in contents reversed %} <!-- ใช้ reversed เพื่อเรียงลำดับกลับ -->
-                
+                {% if content.type == 'REV' %}
                     <div class="content-item">
                         {% if content.title %}
                             <h2 class="text">{{ content.title }}</h2>
@@ -47,7 +47,7 @@
                             </div>
                         {% endif %}
                     </div>
-                
+                {% endif %}
             {% endfor %}
         {% else %}
             <p>No content available.</p>

@@ -2,14 +2,27 @@ body {
     overflow-x: hidden;
     /* Prevent horizontal scroll */
 }
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+main {
+    padding: 0; /* หรือค่าที่คุณต้องการ */
+}
 
 .sidebar {
     height: 100%;
     position: fixed;
-    top: 72px;
+    top: 50px;
+    bottom: 10px;
     right: -250px;
-    /* Start hidden to the right */
-    width: 190px;
+    width: 200px;
     background-color: white;
     z-index: 1000;
     /* Add z-index to ensure it overlaps */
@@ -18,12 +31,14 @@ body {
 .sidebar.open {
     background-color: white;
     right: 0;
+    width: 250px;
+    font-size: smaller;
     /* Show when open */
 }
 
 .list-group-item {
     color: rgb(0, 0, 0);
-    text-align: center;
+    text-align: left;
     font-size: larger;
     padding: 0;
     display: block;
@@ -45,9 +60,7 @@ body {
 
 /* เพิ่มเงาและสีแบล็กกราวด์เมื่อเมาส์ชี้ */
 .nav-link:hover {
-    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.7);
-    /* เงาขาวเมื่อชี้ */
-    background-color:rgb(167, 61, 143);
+    background-color: rgb(167, 61, 143);
     /* แบล็กกราวด์สีดำเมื่อชี้ */
     color: white;
     /* ตัวหนังสือสีขาวเมื่อชี้ */
@@ -72,6 +85,7 @@ body {
 }
 
 .header {
+    height: 50px;
     display: flex;
     /* ใช้ Flexbox */
     justify-content: space-between;
@@ -84,6 +98,14 @@ body {
     /* สีตัวอักษรเป็นสีขาว */
     padding: 1rem;
     /* Padding 1rem (16px) */
+}
+.footer {
+    margin: 0;
+    padding: 0;
+    position: relative; /* ใช้ position relative สำหรับการควบคุมตำแหน่ง */
+    bottom: 0; /* ระบุตำแหน่งที่ต้องการให้ชิดขอบล่าง */
+    width: 100%; /* ให้ footer มีความกว้างเต็มที่ */
+    background-color: #b6b0b0;
 }
 
 .custom-header {
@@ -157,13 +179,162 @@ body {
 }
 
 /*ส่วนของคอนเท้น*/
-.fullPage{
-    background-color: rgb(246, 228, 237);
-}
-.pageAll{
-    margin-top: 15px;
-    margin-left: 15px;
-    margin-right: 15px;
+.fullPage {
     background-color: whitesmoke;
+    margin: 0; /* ลบ margin ทั้งหมด */
+    padding: 0; /* ลบ padding ทั้งหมด */
+    width: 100%; /* ให้เต็มความกว้างของหน้า */
+}
+
+.pageAll {
+    margin-top: 15px;
+    margin-left: 15%;
+    margin-right: 15%;
+    background-color: white;
     padding: 30px;
+    border-radius: 10px;
+
+}
+.paragrah {
+    margin-bottom: 30px;
+}
+
+.image {
+    width: 100%;
+    height: auto;
+    display: block;
+    /* ทำให้เป็น block element */
+    margin: 0 auto;
+    /* จัดให้อยู่กลาง */
+    margin-top: 15px;
+}
+
+.text {
+    letter-spacing: 0.3px;
+    
+    font-size: 14px;
+
+}
+.sub_title {
+    font-size: 14px;
+}
+.pic1 {
+    width: 100%;
+    
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    /* อัตราส่วน 16:9 */
+    height: 0;
+    max-width: 100%;
+    /* กำหนดความกว้างของวิดีโอเป็น 60% ของหน้าจอ */
+    margin: 0 auto;
+    /* จัดให้อยู่ตรงกลางแนวนอน */
+    overflow: hidden;
+    background: #000;
+    margin-top: 30px;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* สำหรับหน้าจอขนาดเล็ก (มือถือ) */
+@media (max-width: 768px) {
+    .pageAll {
+        margin-left: 4%;
+        margin-right: 4%;
+        padding: 20px;
+    }
+    .paragrah {
+        margin-bottom: 27px;
+    }
+
+    .text {
+        font-size: 12px;
+        /* เพิ่มขนาดตัวอักษรให้ใหญ่ขึ้นสำหรับมือถือ */
+        
+    }
+    .sub_title {
+        font-size: 12px;
+    }
+    .pic1 {
+        width: 100%; 
+        height: auto; /* ให้ปรับขนาดความสูงตามอัตราส่วน */
+        display: block; /* ทำให้แน่ใจว่ารูปภาพเป็นบล็อก */
+        margin: 0; /* ลบ margin ทั้งหมด */
+    }
+
+    .image {
+        margin-top: 10px;
+    }
+
+    .video-container {
+        margin-top: 20px;
+    }
+}
+
+/* สำหรับหน้าจอขนาดเล็กมาก (เช่นโทรศัพท์ขนาดเล็ก) */
+@media (max-width: 480px) {
+    .pageAll {
+        margin-left: 2%;
+        margin-right: 2%;
+        padding: 15px;
+    }
+    .paragrah {
+        margin-bottom: 25px;
+    }
+
+    .text {
+        font-size: 12px;
+        
+    }
+    .sub_tietle {
+        font-size: 12px;
+    }
+    .sub_tietle1 {
+        font-size: 13px;
+    }
+    .pic1 {
+        width: 100%; 
+        height: auto; /* ให้ปรับขนาดความสูงตามอัตราส่วน */
+        display: block; /* ทำให้แน่ใจว่ารูปภาพเป็นบล็อก */
+        margin: 0; /* ลบ margin ทั้งหมด */
+    }
+}
+
+/* login */
+.login-container {
+    max-width: 400px; /* ความกว้างสูงสุด */
+    margin: 100px auto; /* ตั้งอยู่กลางหน้า */
+    padding: 20px; /* ระยะห่างในกล่อง */
+    background-color: #ffffff; /* สีพื้นหลังของฟอร์ม */
+    border-radius: 8px; /* มุมโค้ง */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* เงา */
+}
+.login-header {
+    text-align: center; /* จัดกลาง */
+    margin-bottom: 20px; /* ระยะห่างด้านล่าง */
+    color: #007bff; /* สีข้อความ */
+}
+.form-group {
+    margin-bottom: 15px; /* ระยะห่างระหว่างกล่อง */
+}
+.button-login {
+    width: 100%; /* ปรับปุ่มให้เต็มความกว้าง */
+    background-color: #007bff; /* สีพื้นหลังปุ่ม */
+    color: #ffffff; /* สีข้อความ */
+    border: none; /* ไม่มีกรอบ */
+    padding: 10px; /* ระยะห่างในปุ่ม */
+    border-radius: 5px; /* มุมโค้ง */
+    cursor: pointer; /* แสดงเป็นมือเมื่อชี้ */
+}
+button:hover {
+    background-color: #0056b3; /* สีพื้นหลังเมื่อชี้ */
 }

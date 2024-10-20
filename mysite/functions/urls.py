@@ -5,7 +5,11 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('submit/', views.submit_content, name='submit_content'),
-    path('show_content/', views.show_content, name='show_content'),
+    path('content1/', views.content1, name='content1'),
+    path('content2/', views.content2, name='content2'),
+    path('content3/', views.content3, name='content3'),
+    path('content4/', views.content4, name='content4'),
+    path('content5/', views.content5, name='content5'),
 
 ]
 

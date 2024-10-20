@@ -1,48 +1,56 @@
 {% extends "components/base.html" %}
 
-{% block title %}สังคมไทบ้าน{% endblock %}
+{% block title %}เศรษฐกิจไทยบ้าน{% endblock %}
 
 {% block content %}
-
 <body class="fullPage">
     <div class="pageAll">
         {% if contents %}
-        {% for content in contents reversed %} <!-- ใช้ reversed เพื่อเรียงลำดับกลับ -->
+            {% for content in contents reversed %} <!-- ใช้ reversed เพื่อเรียงลำดับกลับ -->
+                
+                    <div class="content-item">
+                        {% if content.title %}
+                            <h2 class="text">{{ content.title }}</h2>
+                        {% endif %}
 
-        {% if content.title %}
-        <h2 class="text">{{ content.title }}</h2>
-        {% endif %}
+                        {% if content.author %}
+                            <p class="text">ผู้เขียน: {{ content.author }}</p>
+                        {% endif %}
 
-        {% if content.author %}
-        <p class="text">{{ content.author }}</p>
-        {% endif %}
+                        {% if content.date %}
+                            <p class="text">วันที่: {{ content.date }}</p>
+                        {% endif %}
 
-        {% if content.date %}
-        <p class="text">{{ content.date }}</p>
-        {% endif %}
+                        {% if content.content %}
+                            <p class="text">{{ content.content }}</p>
+                        {% endif %}
 
-        {% if content.content %}
-        <p class="text">{{ content.content }}</p>
-        {% endif %}
+                        {% if content.caption %}
+                            <p class="text">แคปชั่น: {{ content.caption }}</p>
+                        {% endif %}
 
-        {% if content.caption %}
-        <p class="text">{{ content.caption }}</p>
-        {% endif %}
+                        {% if content.image %}
+                            <img src="{{ content.image.url }}" alt="Image" class="image">
+                        {% endif %}
+                        {% if content.image1 %}
+                            <img src="{{ content.image1.url }}" alt="Image" class="image">
+                        {% endif %}
+                        {% if content.image2 %}
+                            <img src="{{ content.image2.url }}" alt="Image" class="image">
+                        {% endif %}
 
-        {% if content.image %}
-        <img src="{{ content.image.url }}" alt="Image" class="image">
-        {% endif %}
-
-        {% if content.youtube_url %}
-        <div class="video-container">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ content.youtube_url|slice:'-11:' }}"
-                frameborder="0" allowfullscreen></iframe>
-        </div>
-        {% endif %}
-
-        {% endfor %}
+                        {% if content.youtube_url %}
+                            <div class="video-container">
+                                <iframe width="560" height="315" 
+                                        src="https://www.youtube.com/embed/{{ content.youtube_url|slice:'-11:' }}"
+                                        frameborder="0" allowfullscreen></iframe>
+                            </div>
+                        {% endif %}
+                    </div>
+                
+            {% endfor %}
         {% else %}
-        <p>No content available.</p>
+            <p>No content available.</p>
         {% endif %}
     </div>
 </body>
