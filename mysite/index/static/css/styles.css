@@ -338,3 +338,58 @@ main {
 button:hover {
     background-color: #0056b3; /* สีพื้นหลังเมื่อชี้ */
 }
+
+/* ปุ่มลบ แก้ไข */
+.action-buttons {
+    display: flex;
+    gap: 10px; /* ระยะห่างระหว่างปุ่ม */
+}
+
+.action-buttons .btn {
+    padding: 8px 16px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
+}
+
+/* ปุ่มแก้ไข */
+.action-buttons .edit-btn {
+    background-color: #28a745; /* สีเขียว */
+}
+
+.action-buttons .edit-btn:hover {
+    background-color: #218838; /* สีเขียวเข้มขึ้นเมื่อ hover */
+}
+
+/* ปุ่มลบ */
+.action-buttons .delete-btn {
+    background-color: #dc3545; /* สีแดง */
+}
+
+.action-buttons .delete-btn:hover {
+    background-color: #c82333; /* สีแดงเข้มขึ้นเมื่อ hover */
+}
+
+/* การจัดการหน้าจอสำหรับข้อความการลบสำเร็จ */
+.delete-success-container {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.delete-success-container h2 {
+    color: #333;
+}
+
+.delete-success-container .btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    text-decoration: none;
+    color: white;
+    background-color: #007bff;
+    border-radius: 5px;
+    display: inline-block;
+    margin-top: 20px;
+}

@@ -65,16 +65,20 @@
             <li class="list-group-item"><a href="{% url 'content5' %}" class="nav-link">ไทบ้านร่วมสมัย</a></li>
 
             {% if user.is_authenticated %}
-            <li class="list-group-item"><a href="{% url 'submit_content' %}" class="nav-link">เพิ่มเนื้อหา</a></li>
+            <li class="list-group-item">
+                <a href="{% url 'submit_content' %}" class="nav-link">เพิ่มเนื้อหา</a>
+            </li>
 
             <!-- ใช้ฟอร์มเพื่อทำการล็อกเอาท์ด้วย POST -->
             <li class="list-group-item">
                 <form method="POST" action="{% url 'logout' %}">
                     {% csrf_token %}
-                    <button type="submit" class="btn btn-link nav-link">ออกจากระบบ</button>
+                    <button type="submit" class="nav-link-logout"
+                        onclick="return confirm('คุณต้องการออกจากระบบหรือไม่?');">ออกจากระบบ</button>
                 </form>
             </li>
             {% endif %}
+
         </ul>
 
 
